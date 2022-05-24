@@ -12,6 +12,8 @@ const app = express();
 app.use(cors("*"));
 // On demande à Express d'extraire les données des requêtes POST
 app.use(express.urlencoded({ extended: true }));
+//*added for test example.http
+app.use(express.json()); 
 
 // On demande à Express d'extraire les données des requêtes POST formatées en multipart
 const mutipartParser = multer();
