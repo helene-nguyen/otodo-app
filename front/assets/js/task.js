@@ -65,18 +65,31 @@ const taskManager = {
      * 
      * @param {Event} event 
      */
-    handleCreateForm: function (event) {
+    handleCreateForm: async function (event) {
         // Bloquer l'envoie du formulaire
         event.preventDefault();
 
-        // Récupérer les données du formulaire
+        //* Récupérer les données du formulaire
         const taskFormData = new FormData(event.currentTarget);
+        const newTask = taskFormData.get('name');
+        //* Envoyer les données à l'API
+        const options = {
+            method: 'POST',
+            body: taskFormData
+}
+        //* Après confirmation de l'API insérer la tâche dans la page (il y a une fonction toute prete pour ça ;) 
+        //* en utilisant la valeur de retour de l'API
+        const response = await fetch(`${taskManager.apiEndpoint}/tasks`, options);
 
-        //! Envoyer les données à l'API
+        if (response.ok) {
+            const message = await response.json();
+            //todo remove after test
+            console.log("message: ", message);
 
-        //! Après confirmation de l'API insérer la tâche dans la page (il y a une fonction toute prete pour ça ;) 
-        //! en utilisant la valeur de retour de l'API
+            taskManager.insertTaskInHtml(newTask);
+        }
 
+        location.reload();
     },
 
     /**
