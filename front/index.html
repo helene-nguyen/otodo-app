@@ -18,14 +18,14 @@
     <div class="container is-max-desktop p-3">
         <h1 class="title is-3 has-text-centered">Mes tâches à faire</h1>
 
-       <div class="tasks">
+        <div class="tasks">
 
-       </div>
+        </div>
 
         <form class="box create-task">
             <div class="field">
                 <label class="label">Nouvelle tâche à faire</label>
-                
+
                 <div class="control">
                     <input class="input" type="text" name="name" placeholder="Nom de la tâche">
                 </div>
@@ -61,6 +61,23 @@
         </div>
 
     </template>
+
+
+    <!-- MODAL MESSAGE -->
+    <div class="modal" id="deleteMessageModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head column">
+                <main>
+                    <button class="delete close" type="button" aria-label="close"></button>
+                    <p class="modal-card-title">
+                        Message </p>
+                </main>
+            </header>
+            <footer class="modal-card-foot">
+            </footer>
+        </div>
+    </div>
 
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/task.js"></script>

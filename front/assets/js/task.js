@@ -97,16 +97,33 @@ const taskManager = {
      * 
      * @param {Event} event 
      */
-    handleDeleteButton: function (event) {
+    handleDeleteButton: async function (event) {
 
         // On récupère l'ID de l'élément à supprimer
-        const taskHtmlElement = event.currentTarget.closest('.task');
+        const taskHtmlElement = event.target.closest('.task');
         const taskId = taskHtmlElement.dataset.id;
 
-        //! On envoie la requete de suppression à l'API
+        //* On envoie la requete de suppression à l'API
+        const options = {
+            method: 'DELETE'
+        };
+        //* On supprime l'élément dans la page HTML
+        const response = await fetch(`${taskManager.apiEndpoint}/tasks/${taskId}`, options);
 
-        //! On supprime l'élément dans la page HTML
+        if (response.ok) {
+            const message = await response.json();
+            console.log("message: ", message);
 
+            const deletedModal = document.getElementById('deleteMessageModal');
+            deletedModal.classList.add('is-active');
+            deletedModal.querySelector('.modal-card-title').textContent = message;
+            deletedModal.querySelector('.close').addEventListener('click', () => {
+                deletedModal.remove();
+            })
+
+        };
+
+        taskHtmlElement.remove();
     },
 
     /**
@@ -156,10 +173,10 @@ const taskManager = {
 
             location.reload();
         }
-  /*       // On affiche l'input de modification
-        taskHtmlElement.querySelector('.task__edit-form').style.display = 'none';
-        // On masque le titre
-        taskHtmlElement.querySelector('.task__name').style.display = 'block'; */
+        /*       // On affiche l'input de modification
+              taskHtmlElement.querySelector('.task__edit-form').style.display = 'none';
+              // On masque le titre
+              taskHtmlElement.querySelector('.task__name').style.display = 'block'; */
 
 
     }

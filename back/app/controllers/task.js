@@ -93,7 +93,7 @@ const taskController = {
 
             await Task.destroy({ where: { ...req.params } });
 
-            res.status(204);
+            res.json(`Task deleted !`);
 
         } catch (error) {
 
