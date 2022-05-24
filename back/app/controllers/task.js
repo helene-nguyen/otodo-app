@@ -43,6 +43,22 @@ const taskController = {
     //*update a task
     async updateTask(req, res) {
         try {
+            const taskId = Number(req.params.id);
+
+            if (isNaN(taskId)) {
+                throw new Error(`Please verify the provided id, it's not a number`);
+            };
+
+            const task = await Task.findByPk(taskId);
+
+            if (!task) {
+                throw new Error(`Task doesn't exist !`)
+            };
+
+            await Task.update({ ...req.body }, { where: { ...req.params } });
+
+            res.json(`Task updated !`)
+
 
         } catch (error) {
 

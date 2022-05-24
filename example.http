@@ -17,7 +17,7 @@ Content-type: application/json
 
 # ----------------------------UPDATE TASK
 ###
-PUT {{entryPoint}}/tasks/1
+PUT {{entryPoint}}/tasks/5
 Content-type: application/json
 
 {
