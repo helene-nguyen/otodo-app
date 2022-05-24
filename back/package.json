@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node-dev --notify=false app.js"
+    "start": "node-dev --notify=false app.js",
+    "dev": "nodemon app.js",
+    "db:connect": "psql -U otodo -d otodo"
+
   },
   "keywords": [],
   "author": "",

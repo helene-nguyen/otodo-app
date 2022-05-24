@@ -8,11 +8,11 @@ const taskManager = {
     fetchAndInsertTasksFromApi: async function (event) {
 
 
-        // Récupère la liste des tâches à l'aide de la fonction fetch()
+        //! Récupère la liste des tâches à l'aide de la fonction fetch()
 
-        // Boucle sur la liste des tâches
+        //! Boucle sur la liste des tâches
 
-        // pour chaque tâche appeler la fonction insertTaskInHtml()
+        //! pour chaque tâche appeler la fonction insertTaskInHtml()
 
     },
 
@@ -68,10 +68,10 @@ const taskManager = {
         // Récupérer les données du formulaire
         const taskFormData = new FormData(event.currentTarget);
 
-        // Envoyer les données à l'API
+        //! Envoyer les données à l'API
 
-        // Après confirmation de l'API insérer la tâche dans la page (il y a une fonction toute prete pour ça ;) 
-        // en utilisant la valeur de retour de l'API
+        //! Après confirmation de l'API insérer la tâche dans la page (il y a une fonction toute prete pour ça ;) 
+        //! en utilisant la valeur de retour de l'API
 
     },
 
@@ -86,9 +86,9 @@ const taskManager = {
         const taskHtmlElement = event.currentTarget.closest('.task');
         const taskId = taskHtmlElement.dataset.id;
 
-        // On envoie la requete de suppression à l'API
+        //! On envoie la requete de suppression à l'API
 
-        // On supprime l'élément dans la page HTML
+        //! On supprime l'élément dans la page HTML
 
     },
 
@@ -124,10 +124,10 @@ const taskManager = {
         // je récupère l'id de la tâche à modifier
         const taskId = taskFormData.get('id');
 
-        // Envoyer les données à l'API
+        //! Envoyer les données à l'API
 
 
-        // Après confirmation de l'API modifier le nom de la tâche dans le span.task__name
+        //! Après confirmation de l'API modifier le nom de la tâche dans le span.task__name
 
         // On affiche l'input de modification
         taskHtmlElement.querySelector('.task__edit-form').style.display = 'none';

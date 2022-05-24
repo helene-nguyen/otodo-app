@@ -7,10 +7,9 @@ const multer = require('multer');
 const router = require('./app/router');
 
 const app = express();
-const port = process.env.PORT;
 
 // On autorise tout le monde sur notre API
-app.use(cors());
+app.use(cors("*"));
 // On demande à Express d'extraire les données des requêtes POST
 app.use(express.urlencoded({ extended: true }));
 
@@ -21,6 +20,7 @@ app.use(mutipartParser.none());
 
 app.use(router);
 
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`API demarrée sur http://localhost:${port}`);
 });
