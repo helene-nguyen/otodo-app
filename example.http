@@ -25,4 +25,4 @@ Content-type: application/json
 }
 # ----------------------------DELETE TASK
 ###
-DELETE {{entryPoint}}/tasks/1
+DELETE {{entryPoint}}/tasks/5

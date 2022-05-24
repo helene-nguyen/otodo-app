@@ -55,7 +55,13 @@ const taskController = {
                 throw new Error(`Task doesn't exist !`)
             };
 
-            await Task.update({ ...req.body }, { where: { ...req.params } });
+            await Task.update({
+                ...req.body
+            }, {
+                where: {
+                    ...req.params
+                }
+            });
 
             res.json(req.body.name);
 
@@ -72,6 +78,22 @@ const taskController = {
     //*delete a task
     async deleteTask(req, res) {
         try {
+
+            const taskId = Number(req.params.id);
+
+            if (isNaN(taskId)) {
+                throw new Error(`Please verify the provided id, it's not a number`);
+            };
+
+            const task = await Task.findByPk(taskId);
+
+            if (!task) {
+                throw new Error(`Task doesn't exist !`)
+            };
+
+            await Task.destroy({ where: { ...req.params } });
+
+            res.status(204);
 
         } catch (error) {
 
