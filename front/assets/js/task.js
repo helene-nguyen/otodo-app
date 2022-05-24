@@ -7,13 +7,17 @@ const taskManager = {
      */
     fetchAndInsertTasksFromApi: async function (event) {
 
+        //* Récupère la liste des tâches à l'aide de la fonction fetch()
+        const response = await fetch(`${taskManager.apiEndpoint}/tasks`);
+        if (response.ok) {
+            const tasks = await response.json();
+            //* Boucle sur la liste des tâches
 
-        //! Récupère la liste des tâches à l'aide de la fonction fetch()
-
-        //! Boucle sur la liste des tâches
-
-        //! pour chaque tâche appeler la fonction insertTaskInHtml()
-
+            for (const task of tasks) {
+                //* pour chaque tâche appeler la fonction insertTaskInHtml()
+                taskManager.insertTaskInHtml(task);
+            }
+        }
     },
 
     /**
@@ -44,7 +48,7 @@ const taskManager = {
         // On écoute les événements sur les éléments créés
         newTask.querySelector('.task__delete').addEventListener(
             'click', taskManager.handleDeleteButton);
-        
+
         newTask.querySelector('.task__edit').addEventListener(
             'click', taskManager.handleEditButton);
 
