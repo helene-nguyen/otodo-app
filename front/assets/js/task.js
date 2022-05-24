@@ -169,15 +169,15 @@ const taskManager = {
         if (response.ok) {
             const updatedTask = await response.json();
 
-            document.querySelector('span.task__name').textContent = updatedTask;
+            taskHtmlElement.querySelector('span.task__name').textContent = updatedTask;
 
             location.reload();
         }
+
         /*       // On affiche l'input de modification
               taskHtmlElement.querySelector('.task__edit-form').style.display = 'none';
               // On masque le titre
               taskHtmlElement.querySelector('.task__name').style.display = 'block'; */
-
 
     }
 
