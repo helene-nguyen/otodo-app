@@ -83,8 +83,6 @@ const taskManager = {
 
         if (response.ok) {
             const message = await response.json();
-            //todo remove after test
-            console.log("message: ", message);
 
             taskManager.insertTaskInHtml(newTask);
         }
@@ -114,12 +112,12 @@ const taskManager = {
             const message = await response.json();
             console.log("message: ", message);
 
-            const deletedModal = document.getElementById('deleteMessageModal');
-            deletedModal.classList.add('is-active');
-            deletedModal.querySelector('.modal-card-title').textContent = message;
-            deletedModal.querySelector('.close').addEventListener('click', () => {
-                deletedModal.remove();
-            })
+            const messageModal = document.getElementById('messageModal');
+            messageModal.classList.add('is-active');
+            messageModal.querySelector('.modal-card-title').textContent = message;
+            messageModal.querySelector('.close').addEventListener('click', () => {
+                messageModal.remove();
+            });
 
         };
 
@@ -138,6 +136,8 @@ const taskManager = {
         taskHtmlElement.querySelector('.task__edit-form').style.display = 'flex';
         // On masque le titre
         taskHtmlElement.querySelector('.task__name').style.display = 'none';
+        taskHtmlElement.querySelector('.task__input-name').value = '';
+
     },
 
     /**
