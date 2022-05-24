@@ -57,7 +57,7 @@ const taskController = {
 
             await Task.update({ ...req.body }, { where: { ...req.params } });
 
-            res.json(`Task updated !`)
+            res.json(req.body.name);
 
 
         } catch (error) {

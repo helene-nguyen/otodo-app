@@ -76,7 +76,7 @@ const taskManager = {
         const options = {
             method: 'POST',
             body: taskFormData
-}
+        }
         //* Après confirmation de l'API insérer la tâche dans la page (il y a une fonction toute prete pour ça ;) 
         //* en utilisant la valeur de retour de l'API
         const response = await fetch(`${taskManager.apiEndpoint}/tasks`, options);
@@ -128,7 +128,7 @@ const taskManager = {
      * 
      * @param {Event} event 
      */
-    handleEditForm: function (event) {
+    handleEditForm: async function (event) {
         // Bloquer l'envoie du formulaire
         event.preventDefault();
 
@@ -141,15 +141,27 @@ const taskManager = {
         // je récupère l'id de la tâche à modifier
         const taskId = taskFormData.get('id');
 
-        //! Envoyer les données à l'API
+        //* Envoyer les données à l'API
+        const options = {
+            method: 'PUT',
+            body: taskFormData
+        };
 
+        const response = await fetch(`${taskManager.apiEndpoint}/tasks/${taskId}`, options);
+        //* Après confirmation de l'API modifier le nom de la tâche dans le span.task__name
+        if (response.ok) {
+            const updatedTask = await response.json();
 
-        //! Après confirmation de l'API modifier le nom de la tâche dans le span.task__name
+            document.querySelector('span.task__name').textContent = updatedTask;
 
-        // On affiche l'input de modification
+            location.reload();
+        }
+  /*       // On affiche l'input de modification
         taskHtmlElement.querySelector('.task__edit-form').style.display = 'none';
         // On masque le titre
-        taskHtmlElement.querySelector('.task__name').style.display = 'block';
+        taskHtmlElement.querySelector('.task__name').style.display = 'block'; */
+
+
     }
 
 };
