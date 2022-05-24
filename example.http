@@ -1,0 +1,28 @@
+# Entrypoint
+
+@entryPoint = http://localhost:3000
+
+# ----------------------------TASKS
+###
+GET {{entryPoint}}/tasks
+
+# ----------------------------CREATE TASK
+###
+POST {{entryPoint}}/tasks
+Content-type: application/json
+
+{
+    "name": "Ajout d'une nouvelle tâche"
+}
+
+# ----------------------------UPDATE TASK
+###
+PUT {{entryPoint}}/tasks/1
+Content-type: application/json
+
+{
+    "name": "Tache modifiée"
+}
+# ----------------------------DELETE TASK
+###
+DELETE {{entryPoint}}/tasks/1
